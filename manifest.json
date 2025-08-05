@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Bird Checkbox Selector",
+  "version": "1.0",
+  "description": "Select bird checkboxes based on scientific names from eBird",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "https://ebird.org/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["https://ebird.org/*"],
+      "js": ["ebird_extractor.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://birdingplaces.eu/*"],
+      "js": ["checkbox-selector.js"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Bird Checkbox Selector"
+  }
+}
